@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<title>House of Slaves</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0"/>
+		
+		<link href="style/iconfont.css" rel="stylesheet" type="text/css">
+		<link href="style/icons.css" rel="stylesheet" type="text/css">
+		<link href="style/style.css" rel="stylesheet" type="text/css">
+		
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script src="js/jquery-ui-min.js" type="text/javascript"></script>
+			
+		<script src="cordova.js"></script>
+	</head>
+	
+	<body>
+		<div id="offline"></div>
+		
+		<div class="loader">
+			<div class="loader-text loader-blur loader-count-7">
+				<span class="loader-text-words">L</span>
+				<span class="loader-text-words">o</span>
+				<span class="loader-text-words">a</span>
+				<span class="loader-text-words">d</span>
+				<span class="loader-text-words">i</span>
+				<span class="loader-text-words">n</span>
+				<span class="loader-text-words">g</span>
+			</div>
+		</div>
+		<iframe id="website" src="loading.html" scrolling="no" frameborder="0"></iframe>
+		
+		<DIV id="console">
+			<UL rel="toolbar" onclick="void(0);">
+				<LI rel="open"><A href="javascript:console.open();" class="icon-include icon-fw icon-up-dir"></A></LI>
+				<LI rel="close"><A href="javascript:console.close();" class="icon-include icon-fw icon-down-dir"></A></LI>
+				<LI rel="expand"><A href="javascript:console.expand();" class="icon-include icon-fw icon-resize-full"></A></LI>
+				<LI rel="reduce"><A href="javascript:console.reduce();" class="icon-include icon-fw icon-resize-small"></A></LI>
+				<LI rel="reset"><A href="javascript:console.reset();" class="icon-include icon-fw icon-trash text-error"></A></LI>
+				<LI rel="update" class="pull-left"><A href="javascript:app.forceUpdate();" class="icon-include icon-fw icon-download text-info"></A></LI>
+			</UL>
+			<DIV rel="log"></DIV>
+		</DIV>
+		
+		<script src="js/extends.js"></script>
+		<script src="js/console.js"></script>
+		
+		<script src="js/app.js"></script>
+		<script src="js/appPushNotification.js"></script>
+		
+		<script src="js/appConfig.js"></script>
+		
+		<script src="js/scripts.js"></script>
+	</body>
+</html>

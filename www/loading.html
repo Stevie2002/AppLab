@@ -1,0 +1,66 @@
+<!doctype html>
+<head>
+	<title>Loading</title>
+	<link href="style/style.css" rel="stylesheet" type="text/css">
+	
+</head>
+<body style="width: 100%; height: 100%; ">
+<style>
+	.loader {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		background: rgba(0, 0, 0, 0.9);
+		z-index: 1000;
+	}
+	
+		.loader .loader-text {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			text-align: center;
+			width: 100%;
+			height: 100px;
+			line-height: 100px;
+		}
+		
+			.loader .loader-text SPAN {
+				display: inline-block;
+				margin: 5px;
+				color: #ffffff;
+				font-size: 20px;
+				text-transform: uppercase;
+			}
+
+			.loader .loader-text.loader-blur.loader-count-7 .loader-text-words:nth-child(1) { filter: blur(0px); animation: blur 1500ms 166.66666667ms infinite linear alternate; }
+			.loader .loader-text.loader-blur.loader-count-7 .loader-text-words:nth-child(2) { filter: blur(0px); animation: blur 1500ms 333.33333333ms infinite linear alternate; }
+			.loader .loader-text.loader-blur.loader-count-7 .loader-text-words:nth-child(3) { filter: blur(0px); animation: blur 1500ms 500ms infinite linear alternate; }
+			.loader .loader-text.loader-blur.loader-count-7 .loader-text-words:nth-child(4) { filter: blur(0px); animation: blur 1500ms 666.66666667ms infinite linear alternate; }
+			.loader .loader-text.loader-blur.loader-count-7 .loader-text-words:nth-child(5) { filter: blur(0px); animation: blur 1500ms 833.33333333ms infinite linear alternate; }
+			.loader .loader-text.loader-blur.loader-count-7 .loader-text-words:nth-child(6) { filter: blur(0px); animation: blur 1500ms 1000ms infinite linear alternate; }
+			.loader .loader-text.loader-blur.loader-count-7 .loader-text-words:nth-child(7) { filter: blur(0px); animation: blur 1500ms 1166.66666667ms infinite linear alternate; }
+
+	@keyframes blur {
+	  0%	{ filter: blur(0px); }
+	  100%	{ filter: blur(4px); }
+	}
+</style>
+<div class="loader">
+	<div class="loader-text loader-blur loader-count-7">
+		<span class="loader-text-words">L</span>
+		<span class="loader-text-words">o</span>
+		<span class="loader-text-words">a</span>
+		<span class="loader-text-words">d</span>
+		<span class="loader-text-words">i</span>
+		<span class="loader-text-words">n</span>
+		<span class="loader-text-words">g</span>
+	</div>
+</div>
+
+</body>
+</html>
