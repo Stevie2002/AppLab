@@ -31,6 +31,7 @@
 				<resource-file src="res/sounds/beep.wav" target="res/raw/beep.wav" />
 				<resource-file src="res/sounds/evil.wav" target="res/raw/evil.wav" />
 				<resource-file src="res/icons/trinity.png" target="res/drawable/trinity.png" />
+				<resource-file src="res/icons/bitbrew.png" target="res/drawable/bitbrew.png" />
 			</platform>
 			
 			<platform name="ios">
