@@ -130,6 +130,6 @@ var push = {
 		},
 	};
 
+appConfig.onInitialize.push(push.onInitialize);
 appConfig.onDeviceReady.push(push.onDeviceReady);
 appConfig.onWebsiteReady.push(push.sendPushToken);
-appConfig.onInitialize.push(push.onInitialize);
