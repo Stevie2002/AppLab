@@ -96,6 +96,13 @@ var app = {
 		onDeviceReady: function() {
 			console.info('app.onDeviceReady','running on '+device.platform);
 			
+			if(typeof window.BuildInfo != 'undefined') {
+				console.log('','BuildInfo');
+				console.log('',' > '+BuildInfo.packageName);
+				console.log('',' > Name.: '+BuildInfo.name);
+				console.log('',' > Vers.: '+BuildInfo.version);
+			}
+			
 			app.checkDebug();
 			app.checkUpdate();
 			app.onInitialize();
@@ -124,17 +131,12 @@ var app = {
 		
 		checkUpdate : function(params) {
 			if(typeof window.BuildInfo != 'undefined') {
-				console.log('','BuildInfo');
-				console.log('',' > '+BuildInfo.packageName);
-				console.log('',' > Name.: '+BuildInfo.name);
-				console.log('',' > Vers.: '+BuildInfo.version);
-				
 				jQuery.ajax({
 					dataType: 'json',
 					cache	: false,
 					url		: appConfig.updateUrl,
 					data	: {
-						version : BuildInfo.version,
+						version : params=='force' ? '0.0.0' : BuildInfo.version,
 					},
 					success	: function(data){
 						if(data.available) {
@@ -145,7 +147,7 @@ var app = {
 								window.open(data.updateUrl,'_system','');
 							}
 						} else {
-							console.succes('checkUpdate','No Update Available');
+							console.success('checkUpdate','No Update Available');
 						}
 					},
 				});
