@@ -113,7 +113,7 @@ var app = {
 			},data));
 		},
 		
-		checkDebug : function(params) {
+		checkDebug : function() {
 			if(typeof BuildInfo != 'undefined') {
 				if(BuildInfo.debug) {
 					console.log('','Debug aktivated');
@@ -129,16 +129,26 @@ var app = {
 				console.log('',' > Name.: '+BuildInfo.name);
 				console.log('',' > Vers.: '+BuildInfo.version);
 				
-				jQuery.getJSON(appConfig.updateUrl,{version:'0.0.1'},function(data){
-					if(data.available) {
-						console.warn('checkUpdate','Update Available');
-						console.warn('',' > Vers.: '+data.version);
-						console.warn('',' > Build: '+data.build);
-						window.open(data.updateUrl,'_system','');
-					} else {
-						console.info('checkUpdate','No Update Available');
-					}
-				})
+				jQuery.ajax({
+					dataType: 'json',
+					cache	: false,
+					url		: appConfig.updateUrl,
+					data	: {
+						version : BuildInfo.version,
+					},
+					success	: function(data){
+						if(data.available) {
+							console.warn('checkUpdate','Update Available');
+							console.warn('',' > Vers.: '+data.version);
+							console.warn('',' > Build: '+data.build);
+							if(params=='force' || confirm('Update ?')) {
+								window.open(data.updateUrl,'_system','');
+							}
+						} else {
+							console.succes('checkUpdate','No Update Available');
+						}
+					},
+				});
 			}
 		},
 		
