@@ -37,18 +37,16 @@ var push = {
 		},
 		
 		onInitialize : function() {
-			console.info('','push.onInitialize');
-			
 			var token	= window.localStorage.getItem('pushToken')
 			
 			if(token) {
 				pushToken = token;
-				console.success('','>  PushToken loaded');
+				console.success('push.onInitialize','PushToken loaded');
 			}
 		},
 		
 		onDeviceReady : function() {
-			console.info('','push.onDeviceReady');
+			// console.info('','push.onDeviceReady');
 			
 			pushInstance = PushNotification.init(pushConfig);
 				
@@ -59,7 +57,7 @@ var push = {
 			pushInstance.on('btnUpdate', push.btnUpdate);
 			pushInstance.on('btnDissmiss', push.btnDissmiss);
 				
-			console.success('','>  Push initialized');
+			console.success('push.onDeviceReady','Push initialized');
 		},
 		
 		onRegister : function(data) {

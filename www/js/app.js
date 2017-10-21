@@ -4,6 +4,7 @@ jQuery.support.cors = true;
 
 var website = document.getElementById('website');
 
+var appOnline = false;
 var appConfig = {
 		'updateUrl' 	: 'https://applab.thenetworks.de/version.php',
 		'websiteUrl' 	: 'https://applab.thenetworks.de',
@@ -48,13 +49,19 @@ var app = {
 		},
 		
 		onOnline : function() {
-			console.success('app.onOnline','Loaded');
-			jQuery('#offline').css('display','none');
+			if(!appOnline) {
+				console.success('app.onOnline','Loaded');
+				jQuery('#offline').css('display','none');
+				appOnline = true;
+			}
 		},
 		
 		onOffline : function() {
-			console.error('app.onOffline','Loaded');
-			jQuery('#offline').css('display','block');
+			if(appOnline) {
+				console.error('app.onOffline','Loaded');
+				jQuery('#offline').css('display','block');
+				appOnline = false;
+			}
 		},
 		
 		onFail : function(error){
@@ -130,14 +137,14 @@ var app = {
 					},
 					success	: function(data){
 						if(data.available) {
-							console.warn('checkUpdate','Update Available');
+							console.warn('app.checkUpdate','Update Available');
 							console.warn('',' > Vers.: '+data.version);
 							console.warn('',' > Build: '+data.build);
 							if(params=='force') {
 								window.open(data.updateUrl,'_system','');
 							}
 						} else {
-							console.success('checkUpdate','No Update Available');
+							console.info('app.checkUpdate','No Update Available');
 						}
 					},
 				});
