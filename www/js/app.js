@@ -49,16 +49,16 @@ var app = {
 		
 		onOnline : function() {
 			console.success('app.onOnline','Loaded');
-			document.getElementById('offline').css('display','none');
+			jQuery('#offline').css('display','none');
 		},
 		
 		onOffline : function() {
 			console.error('app.onOffline','Loaded');
-			document.getElementById('offline').css('display','block');
+			jQuery('#offline').css('display','block');
 		},
 		
 		onFail : function(error){
-			console.log(JSON.stringify(error));
+			console.error(JSON.stringify(error));
 		},
 		
 		onSuccess : function(error){
@@ -74,6 +74,10 @@ var app = {
 				console.success('app.onWebsiteReady','Loaded');
 				for(var i in appConfig.onWebsiteReady) {
 					appConfig.onWebsiteReady[i]();
+				}
+				
+				if(typeof navigator.splashscreen != 'undefined') {
+					navigator.splashscreen.hide();
 				}
 				
 				app.triggerEvent('onWebsiteReady');
@@ -92,6 +96,13 @@ var app = {
 		onDeviceReady: function() {
 			console.info('app.onDeviceReady','running on '+device.platform);
 			
+			if(typeof window.BuildInfo != 'undefined') {
+				console.log('','BuildInfo');
+				console.log('',' > '+BuildInfo.packageName);
+				console.log('',' > Name.: '+BuildInfo.name);
+				console.log('',' > Vers.: '+BuildInfo.version);
+			}
+			
 			app.checkUpdate();
 			app.onInitialize();
 			
@@ -109,12 +120,27 @@ var app = {
 		},
 		
 		checkUpdate : function(params) {
-			if(typeof window.AppUpdate != 'undefined') {
-				console.log('','AppVersion');
-				console.log('',' > Vers.: '+AppVersion.version);
-				console.log('',' > Build: '+AppVersion.build);
-				
-				window.AppUpdate.checkAppUpdate(null, app.onFail, appConfig.updateUrl + (params ? '?'+params : ''));
+			if(typeof window.BuildInfo != 'undefined') {
+				jQuery.ajax({
+					dataType: 'json',
+					cache	: false,
+					url		: appConfig.updateUrl,
+					data	: {
+						version : params=='force' ? '0.0.0' : BuildInfo.version,
+					},
+					success	: function(data){
+						if(data.available) {
+							console.warn('checkUpdate','Update Available');
+							console.warn('',' > Vers.: '+data.version);
+							console.warn('',' > Build: '+data.build);
+							if(params=='force') {
+								window.open(data.updateUrl,'_system','');
+							}
+						} else {
+							console.success('checkUpdate','No Update Available');
+						}
+					},
+				});
 			}
 		},
 		
