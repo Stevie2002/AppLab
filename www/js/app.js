@@ -5,8 +5,8 @@ jQuery.support.cors = true;
 var website = document.getElementById('website');
 
 var appConfig = {
-		'updateUrl' 	: 'https://applab.thenetworks.de/version.php',
-		'websiteUrl' 	: 'https://applab.thenetworks.de',
+		'updateUrl' 	: 'http://applab.thenetworks.de/version.php',
+		'websiteUrl' 	: 'http://applab.thenetworks.de',
 		'onInitialize'	: [],
 		'onDeviceReady'	: [],
 		'onWebsiteReady': [],
@@ -76,6 +76,10 @@ var app = {
 					appConfig.onWebsiteReady[i]();
 				}
 				
+				if(typeof navigator.splashscreen != 'undefined') {
+					navigator.splashscreen.hide();
+				}
+				
 				app.triggerEvent('onWebsiteReady');
 			}
 		},
@@ -92,6 +96,7 @@ var app = {
 		onDeviceReady: function() {
 			console.info('app.onDeviceReady','running on '+device.platform);
 			
+			app.checkDebug();
 			app.checkUpdate();
 			app.onInitialize();
 			
@@ -108,13 +113,25 @@ var app = {
 			},data));
 		},
 		
+		checkDebug : function(params) {
+			if(typeof BuildInfo != 'undefined') {
+				if(BuildInfo.debug) {
+					console.log('','Debug aktivated');
+					console.show();
+				}
+			}
+		},
+		
 		checkUpdate : function(params) {
-			if(typeof window.AppUpdate != 'undefined') {
-				console.log('','AppVersion');
-				console.log('',' > Vers.: '+AppVersion.version);
-				console.log('',' > Build: '+AppVersion.build);
+			if(typeof window.BuildInfo != 'undefined') {
+				console.log('','BuildInfo');
+				console.log('',' > Name.: '+BuildInfo.packageName);
+				console.log('',' > Base.: '+BuildInfo.basePackageName);
+				console.log('',' > Build: '+BuildInfo.displayName);
+				console.log('',' > App..: '+BuildInfo.name);
+				console.log('',' > Vers.: '+BuildInfo.version);
 				
-				window.AppUpdate.checkAppUpdate(null, app.onFail, appConfig.updateUrl + (params ? '?'+params : ''));
+				// window.AppUpdate.checkAppUpdate(null, app.onFail, appConfig.updateUrl + (params ? '?'+params : ''));
 			}
 		},
 		

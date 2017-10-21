@@ -44,7 +44,7 @@
 			<preference name="FadeSplashScreen" value="true"/>
 			<preference name="FadeSplashScreenDuration" value="500"/>
 			<preference name="ShowSplashScreenSpinner" value="false"/>
-			<preference name="AutoHideSplashScreen" value="true" />
+			<preference name="AutoHideSplashScreen" value="false" />
 			<preference name="SplashScreenDelay" value="1500" />
 			
 			<platform name="android">
@@ -161,13 +161,12 @@
 			<plugin name="cordova-plugin-statusbar" />
 			<plugin name="cordova-plugin-device" />
 			<plugin name="cordova-plugin-whitelist" />
-			<plugin name="cordova-plugin-app-version" />
-			<plugin name="cordova-plugin-app-update" />
 			<plugin name="cordova-plugin-file" />
 			<plugin name="cordova-plugin-file-transfer" />
 			<plugin name="cordova-plugin-splashscreen" />
 			<plugin name="cordova-plugin-vibration" />
 			<plugin name="cordova-plugin-media" />
+			<plugin name="cordova-plugin-buildinfo" />
 			
 			<plugin name="phonegap-plugin-push" />
 			
