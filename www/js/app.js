@@ -58,7 +58,7 @@ var app = {
 		},
 		
 		onFail : function(error){
-			console.log(JSON.stringify(error));
+			console.error(JSON.stringify(error));
 		},
 		
 		onSuccess : function(error){
@@ -133,7 +133,7 @@ var app = {
 							console.warn('checkUpdate','Update Available');
 							console.warn('',' > Vers.: '+data.version);
 							console.warn('',' > Build: '+data.build);
-							if(params=='force' || confirm('Update ?')) {
+							if(params=='force') {
 								window.open(data.updateUrl,'_system','');
 							}
 						} else {
