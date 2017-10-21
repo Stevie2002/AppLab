@@ -116,7 +116,6 @@ var push = {
 		btnSend : function(data) {
 			console.info('push.btnSend','Clicked');
 			console.log(JSON.stringify(data));
-			console.line();
 		},
 		
 		btnUpdate : function(data) {
