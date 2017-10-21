@@ -161,8 +161,7 @@
 			<plugin name="cordova-plugin-statusbar" />
 			<plugin name="cordova-plugin-device" />
 			<plugin name="cordova-plugin-whitelist" />
-			<plugin name="cordova-plugin-app-version" />
-			<plugin name="cordova-plugin-app-update" />
+			<plugin name="cordova-plugin-buildinfo" />
 			<plugin name="cordova-plugin-file" />
 			<plugin name="cordova-plugin-file-transfer" />
 			<plugin name="cordova-plugin-splashscreen" />
