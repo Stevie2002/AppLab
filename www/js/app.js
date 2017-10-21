@@ -5,8 +5,8 @@ jQuery.support.cors = true;
 var website = document.getElementById('website');
 
 var appConfig = {
-		'updateUrl' 	: 'http://applab.thenetworks.de/version.php',
-		'websiteUrl' 	: 'http://applab.thenetworks.de',
+		'updateUrl' 	: 'https://applab.thenetworks.de/version.php',
+		'websiteUrl' 	: 'https://applab.thenetworks.de',
 		'onInitialize'	: [],
 		'onDeviceReady'	: [],
 		'onWebsiteReady': [],
@@ -125,13 +125,20 @@ var app = {
 		checkUpdate : function(params) {
 			if(typeof window.BuildInfo != 'undefined') {
 				console.log('','BuildInfo');
-				console.log('',' > Name.: '+BuildInfo.packageName);
-				console.log('',' > Base.: '+BuildInfo.basePackageName);
-				console.log('',' > Build: '+BuildInfo.displayName);
-				console.log('',' > App..: '+BuildInfo.name);
+				console.log('',' > '+BuildInfo.packageName);
+				console.log('',' > Name.: '+BuildInfo.name);
 				console.log('',' > Vers.: '+BuildInfo.version);
 				
-				// window.AppUpdate.checkAppUpdate(null, app.onFail, appConfig.updateUrl + (params ? '?'+params : ''));
+				jQuery.getJSON(appConfig.updateUrl,{version:'0.0.1'},function(data){
+					if(data.available) {
+						console.warn('checkUpdate','Update Available');
+						console.warn('',' > Vers.: '+data.version);
+						console.warn('',' > Build: '+data.build);
+						window.open(data.updateUrl,'_system','');
+					} else {
+						console.info('checkUpdate','No Update Available');
+					}
+				})
 			}
 		},
 		
