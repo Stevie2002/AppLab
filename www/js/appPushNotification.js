@@ -54,6 +54,7 @@ var push = {
 			pushInstance.on('registration', push.onRegister);
 			pushInstance.on('notification', push.onNotification);
 			
+			pushInstance.on('btnSend', push.btnSend);
 			pushInstance.on('btnUpdate', push.btnUpdate);
 			pushInstance.on('btnDissmiss', push.btnDissmiss);
 				
@@ -118,13 +119,18 @@ var push = {
 			console.error('push.onError',event.message);
 		},
 		
-		btnDissmiss : function(event) {
-			console.info('push.btnDissmiss','Clicked');
+		btnSend : function(data) {
+			console.info('push.btnSend','Clicked');
+			push.onNotification(data);
 		},
 		
-		btnUpdate : function(event) {
+		btnUpdate : function(data) {
 			console.info('push.btnUpdate','Clicked');
-			window.open('https://build.phonegap.com/apps/2854355/download/android','_system','');
+			app.forceUpdate();
+		},
+		
+		btnDissmiss : function(data) {
+			console.info('push.btnDissmiss','Clicked');
 		},
 	};
 
