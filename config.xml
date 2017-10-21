@@ -170,8 +170,6 @@
 			
 			<plugin name="phonegap-plugin-push" />
 			
-			<!--plugin name="https://github.com/Stevie2002/Test" /-->
-			
 			<platform name="ios">
 				<preference name="StatusBarOverlaysWebView" value="false" />
 				<preference name="StatusBarBackgroundColor" value="#000000" />

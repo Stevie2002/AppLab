@@ -49,12 +49,12 @@ var app = {
 		
 		onOnline : function() {
 			console.success('app.onOnline','Loaded');
-			document.getElementById('offline').css('display','none');
+			jQuery('#offline').css('display','none');
 		},
 		
 		onOffline : function() {
 			console.error('app.onOffline','Loaded');
-			document.getElementById('offline').css('display','block');
+			jQuery('#offline').css('display','block');
 		},
 		
 		onFail : function(error){
@@ -103,7 +103,6 @@ var app = {
 				console.log('',' > Vers.: '+BuildInfo.version);
 			}
 			
-			app.checkDebug();
 			app.checkUpdate();
 			app.onInitialize();
 			
@@ -118,15 +117,6 @@ var app = {
 			app.parseCommands(Object.merge({
 				'env' : 'app'
 			},data));
-		},
-		
-		checkDebug : function() {
-			if(typeof BuildInfo != 'undefined') {
-				if(BuildInfo.debug) {
-					console.log('','Debug aktivated');
-					console.show();
-				}
-			}
 		},
 		
 		checkUpdate : function(params) {

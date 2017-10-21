@@ -46,6 +46,9 @@
         },
         "cordova-plugin-app-version": {
             "PACKAGE_NAME": "de.house-of-slaves.app"
+        },
+        "cordova-plugin-buildinfo": {
+            "PACKAGE_NAME": "de.thenetworks.applab"
         }
     },
     "dependent_plugins": {

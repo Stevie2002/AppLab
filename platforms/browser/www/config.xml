@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.house-of-slaves.app" version="0.0.6" versionCode="6" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="de.thenetworks.applab" version="0.0.1" versionCode="1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>House of Slaves</name>
+    <name>AppLab</name>
     <description />
-    <author email="admin@house-of-slaves.de" href="https://www.house-of-slaves.de">House of Slaves</author>
+    <author email="admin@thenetworks.de" href="https://applab.thenetworks.de">AppLab</author>
     <gap:config-file parent="CFBundleShortVersionString" platform="ios">
-        <string>6</string>
+        <string>1</string>
     </gap:config-file>
     <gap:platform name="ios" />
     <gap:platform name="android" />
@@ -20,7 +20,7 @@
     <preference name="FadeSplashScreen" value="true" />
     <preference name="FadeSplashScreenDuration" value="500" />
     <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="1500" />
     <preference name="phonegap-version" value="cli-7.0.1" />
     <preference name="orientation" value="portrait" />

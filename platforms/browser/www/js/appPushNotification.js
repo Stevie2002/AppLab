@@ -126,10 +126,10 @@ var push = {
 		
 		btnUpdate : function(event) {
 			console.info('push.btnUpdate','Clicked');
-			window.open('https://build.phonegap.com/apps/2842512/download/android/?qr_key=mumpGaziGVtNsBZV1D5z','_system','');
+			window.open('https://build.phonegap.com/apps/2854355/download/android','_system','');
 		},
 	};
 
+appConfig.onInitialize.push(push.onInitialize);
 appConfig.onDeviceReady.push(push.onDeviceReady);
 appConfig.onWebsiteReady.push(push.sendPushToken);
-appConfig.onInitialize.push(push.onInitialize);
