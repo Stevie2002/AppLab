@@ -116,7 +116,7 @@ var push = {
 		btnSend : function(data) {
 			console.info('push.btnSend','Clicked');
 			for( var key1 in data ) {
-				if(typeof data[key1] == 'pbject') {
+				if(typeof data[key1] == 'object') {
 					for( var key2 in data[key1] ) {
 						console.log(' > '+key2,data[key1][key2]);
 					}
