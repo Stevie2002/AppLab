@@ -75,7 +75,18 @@ var push = {
 		},
 		
 		onNotification : function(data) {
-			// console.info('push.onNotification',event.event);
+			if( data.additionalData.foreground )
+			{
+				console.info('push.onNotification','inline notification');
+			}
+			else if( data.additionalData.coldstart )
+			{
+				console.info('push.onNotification','coldstart notification');
+			}
+			else
+			{
+				console.info('push.onNotification','background notification');
+			}
 			
 			console.line();
 			
@@ -85,26 +96,9 @@ var push = {
 			console.log(' > Sound',data.sound);
 			console.log(' > Image',data.image);
 			
-			for( var key in data.additionalData) {
+			for( var key in data.additionalData ) {
 				console.log(' > '+key,data.additionalData[key]);
 			}
-			
-			if( data.additionalData.foreground )
-			{
-				console.log('Method','inline notification');
-			}
-			else if( data.additionalData.coldstart )
-			{
-				console.log('Method','coldstart notification');
-			}
-			else
-			{
-				console.log('Method','background notification');
-			}
-			
-			console.log('Time',data.additionalData.datetime);
-			console.log('Subjec',data.title);
-			console.log('Message',data.message);
 			
 			if(typeof data.additionalData.command != 'undefined') {
 				console.info('Exec Command',data.additionalData.command.env+'.'+data.additionalData.command.action);
@@ -121,7 +115,13 @@ var push = {
 		
 		btnSend : function(data) {
 			console.info('push.btnSend','Clicked');
-			push.onNotification(data);
+			for( var key1 in data ) {
+				if(typeof data[key1] == 'pbject') {
+					for( var key2 in data[key1] ) {
+						console.log(' > '+key2,data[key1][key2]);
+					}
+				} else console.log(' > '+key1,data[key1]);
+			}
 		},
 		
 		btnUpdate : function(data) {
