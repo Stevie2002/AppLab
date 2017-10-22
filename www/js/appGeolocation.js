@@ -47,9 +47,10 @@ var geo = {
 		},
 		
 		onSuccess : function(position) {
-			console.success('geo.onSuccess','LOaded');
+			console.success('geo.onSuccess','Loaded');
 			
-			app.triggerEvent('onLocation',position);
+			console.log(JSON.stringify(position));
+			// app.triggerEvent('onLocation',position);
 			
 			console.success('','Position sent');
 		},
