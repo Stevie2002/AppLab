@@ -142,6 +142,8 @@ var app = {
 							console.warn('',' > Build: '+data.build);
 							if(params=='force') {
 								window.open(data.updateUrl,'_system','');
+							} else {
+								navigator.notification.confirm('Es steht ein neues Update zur Verfügung.', app.btnDialogUpdate, 'Neues Update verfügbar', ['Später','Aktualisieren'])
 							}
 						} else {
 							console.info('app.checkUpdate','No Update Available');
@@ -153,6 +155,12 @@ var app = {
 		
 		forceUpdate : function() {
 			app.checkUpdate('force');
+		},
+		
+		btnDialogUpdate : function(buttonIndex) {
+			if(buttonIndex == 1) {
+				app.checkUpdate('force');
+			}
 		},
 		
 		triggerEvent : function(eventName,data) {
