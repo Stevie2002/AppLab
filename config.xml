@@ -166,6 +166,7 @@
 			<plugin name="cordova-plugin-splashscreen" />
 			<plugin name="cordova-plugin-vibration" />
 			<plugin name="cordova-plugin-media" />
+			<plugin name="cordova-plugin-dialogs" />
 			<plugin name="cordova-plugin-buildinfo" />
 			
 			<plugin name="phonegap-plugin-push" spec="2.0.0" />
