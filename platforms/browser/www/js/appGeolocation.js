@@ -15,20 +15,8 @@ var geo = {
 		},
 		
 		onDeviceReady : function() {
-			if(typeof navigator.geolocation != 'undefined') {
-				if(geoConfig.watch) {
-					geoInstance = navigator.geolocation.watchPosition(
-										geo.onSuccess,
-										geo.onError,
-										{
-											maximumAge			: geoConfig.maximumAge,
-											timeout				: geoConfig.timeout,
-											enableHighAccuracy	: geoConfig.accuracy,
-										}
-									);
-					
-					console.success('geo.onDeviceReady','Geo Watch initialized');
-				}	
+			if(geoConfig.watch) {
+				geo.startWatching();
 			}
 		},
 		
@@ -46,12 +34,38 @@ var geo = {
 			}
 		},
 		
+		startWatching : function(event) {
+			if(typeof navigator.geolocation != 'undefined') {
+				geoInstance = navigator.geolocation.watchPosition(
+					geo.onSuccess,
+					geo.onError,
+					{
+						maximumAge			: geoConfig.maximumAge,
+						timeout				: geoConfig.timeout,
+						enableHighAccuracy	: geoConfig.accuracy,
+					}
+				);
+				
+				console.success('geo.onDeviceReady','Geo Watch started');
+			}
+		},
+		
+		stopWatching : function(event) {
+			if(typeof navigator.geolocation != 'undefined') {
+				navigator.geolocation.clearWatch(geoInstance);
+				console.success('geo.onDeviceReady','Geo Watch stopped');
+			}
+		},
+		
 		onSuccess : function(position) {
-			console.success('geo.onSuccess','LOaded');
-			
-			app.triggerEvent('onLocation',position);
-			
-			console.success('','Position sent');
+			if(position.length) {
+				console.success('geo.onSuccess','Loaded');
+				
+				console.log(JSON.stringify(position));
+				app.triggerEvent('onLocation',position);
+				
+				console.success('','Position sent');
+			}
 		},
 		
 		onError : function(event) {

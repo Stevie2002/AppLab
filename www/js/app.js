@@ -120,7 +120,7 @@ var app = {
 		
 		onReceiveMessage : function(event) {
 			var data = typeof event.data == 'object' ? event.data : JSON.parse(event.data).additionalData;
-			console.info('app.onReceiveMessage',data.command+' > '+data.action);
+			console.info('app.onReceiveMessage','app > '+data.action);
 			app.parseCommands(Object.merge({
 				'env' : 'app'
 			},data));
