@@ -171,6 +171,7 @@
 			
 			<!-- OPTIONAL PLUGINS -->
 			<plugin name="cordova-plugin-geolocation" />
+			<plugin name="cordova-plugin-camera" />
 			<!-- / OPTIONAL PLUGINS -->
 			
 			<plugin name="phonegap-plugin-push" spec="2.0.0" />

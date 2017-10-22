@@ -46,26 +46,31 @@ var geo = {
 					}
 				);
 				
-				console.success('geo.onDeviceReady','Geo Watch started');
+				console.success('geo.startWatching','Geo Watch started');
 			}
 		},
 		
 		stopWatching : function(event) {
 			if(typeof navigator.geolocation != 'undefined') {
 				navigator.geolocation.clearWatch(geoInstance);
-				console.success('geo.onDeviceReady','Geo Watch stopped');
+				console.success('geo.stopWatching','Geo Watch stopped');
 			}
 		},
 		
 		onSuccess : function(position) {
-			if(position.length) {
-				console.success('geo.onSuccess','Loaded');
-				
-				console.log(JSON.stringify(position));
-				app.triggerEvent('onLocation',position);
-				
-				console.success('','Position sent');
-			}
+			console.success('geo.onSuccess','Loaded');
+			
+			app.triggerEvent('onLocation',{
+				'latitude'	: position.coords.latitude,
+				'longitude'	: position.coords.longitude,
+				'altitude'	: position.coords.altitude,
+				'accuracy'	: position.coords.accuracy,
+				'heading'	: position.coords.heading,
+				'speed'		: position.coords.speed,
+				'timestamp'	: position.timestamp,
+			});
+			
+			console.success('','Position sent');
 		},
 		
 		onError : function(event) {

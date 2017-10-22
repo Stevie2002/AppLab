@@ -55,6 +55,9 @@
         },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "de.thenetworks.applab"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "de.thenetworks.applab"
         }
     },
     "dependent_plugins": {
