@@ -4,3 +4,7 @@ push.setConfig({
 		'iconColor'	: '#AD0000',
 	}
 });
+
+geo.setConfig({
+	'watch'		: true,
+});

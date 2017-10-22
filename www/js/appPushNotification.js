@@ -101,7 +101,7 @@ var push = {
 			}
 			
 			if(typeof data.additionalData.command != 'undefined') {
-				console.info('Exec Command',data.additionalData.command.env+'.'+data.additionalData.command.action);
+				console.info('Exec Command',data.additionalData.command.env+' > '+data.additionalData.command.action);
 				console.line();
 				app.parseCommands(data.additionalData.command);
 			}

@@ -372,6 +372,22 @@ module.exports = [
         "clobbers": [
             "BuildInfo"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
+        "pluginId": "cordova-plugin-dialogs",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/browser/notification.js",
+        "id": "cordova-plugin-dialogs.notification_browser",
+        "pluginId": "cordova-plugin-dialogs",
+        "merges": [
+            "navigator.notification"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -392,7 +408,9 @@ module.exports.metadata =
     "cordova-plugin-media": "3.0.1",
     "phonegap-plugin-push": "1.10.5",
     "cordova-plugin-app-version": "0.1.9",
-    "cordova-plugin-buildinfo": "2.0.1"
+    "cordova-plugin-buildinfo": "2.0.1",
+    "cordova-plugin-dialogs": "1.3.3",
+    "cordova-plugin-geolocation": "2.4.3"
 }
 // BOTTOM OF METADATA
 });

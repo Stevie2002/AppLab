@@ -169,6 +169,10 @@
 			<plugin name="cordova-plugin-dialogs" />
 			<plugin name="cordova-plugin-buildinfo" />
 			
+			<!-- OPTIONAL PLUGINS -->
+			<plugin name="cordova-plugin-geolocation" />
+			<!-- / OPTIONAL PLUGINS -->
+			
 			<plugin name="phonegap-plugin-push" spec="2.0.0" />
 			
 			<platform name="ios">

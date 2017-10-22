@@ -143,7 +143,7 @@ var app = {
 							if(params=='force') {
 								window.open(data.updateUrl,'_system','');
 							} else {
-								navigator.notification.confirm('Es steht ein neues Update zur Verfügung.', app.btnDialogUpdate, 'Neues Update verfügbar', ['Später','Aktualisieren'])
+								navigator.notification.confirm(data.message, app.btnDialogUpdate, data.title, [data.button1,data.button2])
 							}
 						} else {
 							console.info('app.checkUpdate','No Update Available');
