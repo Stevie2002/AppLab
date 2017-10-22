@@ -58,14 +58,19 @@ var geo = {
 		},
 		
 		onSuccess : function(position) {
-			if(position.length) {
-				console.success('geo.onSuccess','Loaded');
-				
-				console.log(JSON.stringify(position));
-				app.triggerEvent('onLocation',position);
-				
-				console.success('','Position sent');
-			}
+			console.success('geo.onSuccess','Loaded');
+			
+			app.triggerEvent('onLocation',{
+				'latitude'	: position.coords.latitude,
+				'longitude'	: position.coords.longitude,
+				'altitude'	: position.coords.altitude,
+				'accuracy'	: position.coords.accuracy,
+				'heading'	: position.coords.heading,
+				'speed'		: position.coords.speed,
+				'timestamp'	: position.timestamp,
+			});
+			
+			console.success('','Position sent');
 		},
 		
 		onError : function(event) {
